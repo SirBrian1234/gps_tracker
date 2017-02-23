@@ -13,8 +13,7 @@ This repository keeps standalone python scripts for various gps tracking and net
 
 -> to provide daemon services for the above
 
-
-The repository's source code is used for the [] project which may be viewed from my blog from here:
+The repository's source code is used for the " " project which may be viewed from my blog from here:
 
 
 Installing
@@ -58,12 +57,83 @@ https://support.google.com/accounts/answer/6010255
 
 http://stackoverflow.com/questions/10147455/how-to-send-an-email-with-gmail-as-provider-using-python
 
+Configuring 
+-----------
+You should pass on your API key and your gmail credentials to configure.py
+
+  $ nano configure.py
+
 Testing gmail
 -------------
-You may send test your email setup with this script:
+You may send test your email setup with the following script:
 
   $ python3 test_gmail.py
   
-Running
+How to use
+----------
+With the scripts you may do the following actions:
+
+Logging and generating gmaps
+----------------------------
+  #starts logging gps data
+  $ python3 gps_logger.py
+  
+  #logs gps data as a daemon service and therefore is not afeced by shell hangups
+  $ python3 d_gps_logger.py start|stop|restart
+  
+  #generates a visual map from the logged data
+  $ python3 generate_gmap.py
+  
+Streaming from the tracker (client) to a server and generate gmaps on the fly
+-----------------------------------------------------------------------------
+
+  #starts a server, to be used from another host
+  $ python3 gps_stream_server.py [server's tcp port]
+  
+  #starts a client from the gps tracker host
+  $ python3 gps_stream_client.py [server's ip address] [server's tcp port]
+  
+  #controlls a client from the gps tracker as a daemon
+  $ python3 gps_stream_client.py [server's ip address] [server's tcp port] start|stop|restart
+  
+Sending email notifications
+---------------------------
+
+  #starts a daemon service to send an email every time the device connects/reconnects to the Internet
+  $ python3 d_send_email_on_internet.py start|stop|restart
+  
+  #starts a daemon service to send an email every time the tracker has a gps FIX
+  $ python3 d_send_email_on_fix.py start|stop|restart
+  
+Internet/Network
+----------------
+
+  #returns to the shell 0 when there is no Internet and 1 when there is
+  #access the return variable with the $? shell variable
+  $ python3 is_there_internet.py
+  
+  #waits while there is no Internet
+  $ python3 wait_for_internet.py
+  
+  #checks wheter an expected public ip address is the hosts ip address 
+  #returns to the shell 1 when you have guessed right and 0 when you have not.
+  #this feature is mainly used to detect U-turns and do the appropriate actions.
+  $ python3 is_my_wan_ip.py [public ip address]
+  
+Daemon services
+---------------
+
+  #to make your own services
+  nano daemon-client.py
+  
+  Thanks to Sander Marechal for the code found from:
+  https://web.archive.org/web/20160305151936/http://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/
+  
+License
 -------
 
+My code is lisenced under Creative Commons Atribution 4.0 International:
+https://creativecommons.org/licenses/by/4.0/
+
+You may use the source code commercially.
+You should provide attribution for all the source code authors.
