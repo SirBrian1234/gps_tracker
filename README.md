@@ -2,11 +2,17 @@
 This repository keeps standalone python scripts for various gps tracking and networking tasks: 
 
 -> logging gps data and generate google maps in .html files
+
 -> streaming gps data over LAN/Internet from a client to a server
+
 -> to check a device's Public (WAN) IP adress
+
 -> to check wheter a host may be/not be connected to the Internet
+
 -> to send the proper email notifications for the above
+
 -> to provide daemon services for the above
+
 
 The repository's source code is used for the [] project which may be viewed from my blog from here:
 
@@ -20,8 +26,17 @@ https://github.com/MartijnBraam/gpsd-py3
 In Raspbian/Debian In order to install all the above dependencies:
 
   $ sudo apt-get update
-  $ sudo apt-get install gpsd python3
+  
+  $ sudo apt-get install gpsd python3 git
+  
   $ sudo pip3 install gpsd-py3
+  
+  $ cd ~
+  
+  $ git clone https://github.com/kostiskag/gps_tracker.git
+  
+  $ cd gps_tracker
+  
   
 Setting Up
 ----------
@@ -45,7 +60,7 @@ http://stackoverflow.com/questions/10147455/how-to-send-an-email-with-gmail-as-p
 
 Testing gmail
 -------------
-You may send test your email setup with this script
+You may send test your email setup with this script:
 
   $ python3 test_gmail.py
   
