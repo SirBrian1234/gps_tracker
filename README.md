@@ -2,7 +2,7 @@
 This repository keeps standalone python scripts for various gps tracking and networking tasks: 
 
 - logging gps data and generate google maps in .html files
-- streaming gps data over LAN/Internet from a client to a server
+- streaming gps data over LAN/Internet from a client with gps to a server
 - to check a device's Public (WAN) IP adress
 - to check wheter a host may be/not be connected to the Internet
 - to send the proper email notifications for the above
