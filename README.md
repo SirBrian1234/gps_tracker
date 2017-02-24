@@ -94,7 +94,8 @@ With the scripts you may do the following actions:
   #starts a daemon service to send an email every time the device connects/reconnects to the Internet
   $ python3 d_send_email_on_internet.py start|stop|restart
   
-  #starts a daemon service to send an email every time the tracker has a gps FIX
+  #starts a daemon service to send an email every time the tracker has a gps FIX and every 5min
+  #the latest known location
   $ python3 d_send_email_on_fix.py start|stop|restart
   ```
   
@@ -127,17 +128,37 @@ With the scripts you may do the following actions:
 ### To create a script bundle in order to start|stop|restart all the daemon services together
 
   ```
+  cd ~
   nano gps_bundle_services
   ```  
   Inside the file:
   ```
-  ... lalala to do...
+  #!/bin/bash
+  # comment the lines of the services you do not need to be started on the group
+  # you may run this file as ./gps_bundle start|stop|restart
+  
+  echo "starting/stopping logger"
+  python3 d_gps_logger.py $1
+  sleep 1
+  echo "starting/stopping stream client lan"
+  python3 d_gps_stream_client.py 192.168.1.5 6000 $1
+  sleep 1
+  echo "starting/stopping stream client internet"
+  python3 d_gps_stream_client.py 1.2.3.4 2345 $1
+  sleep 1
+  echo "start/stop email on internet"
+  python3 d_send_email_on_internet.py $1
+  sleep 1
+  echo "start/stop fix email notify"
+  python3 d_send_email_on_fix.py $1
+
+  ps -A | grep python3
   ```  
   Save the file and provide execution permissions:
   ```
   chmod +x gps_bundle_services
   ```
-  Use like:
+  Use the file like:
   ```
   ./gps_bundle_services start|stop|restart
   ```
