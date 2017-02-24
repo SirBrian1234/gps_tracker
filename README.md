@@ -138,23 +138,23 @@ With the scripts you may do the following actions:
   # you may run this file as ./gps_bundle start|stop|restart
   
   echo "starting/stopping logger"
-  python3 d_gps_logger.py $1
+  python3 gps_tracker/d_gps_logger.py $1
   sleep 1
   echo "starting/stopping stream client lan"
-  python3 d_gps_stream_client.py 192.168.1.5 2345 $1
+  python3 gps_tracker/d_gps_stream_client.py 192.168.1.5 2345 $1
   sleep 1
-  python3 /home/pi/is_my_wan_ip.py 1.2.3.4
+  python3 gps_tracker/is_my_wan_ip.py 1.2.3.4
   if [ $? = "0" ]; then
      #this is not a U-turn!
      echo "starting/stopping stream client internet"
-     python3 d_gps_stream_client.py 1.2.3.4 2345 $1
+     python3 gps_tracker/d_gps_stream_client.py 1.2.3.4 2345 $1
      sleep 1
   fi
   echo "start/stop email on internet"
-  python3 d_send_email_on_internet.py $1
+  python3 gps_tracker/d_send_email_on_internet.py $1
   sleep 1
   echo "start/stop fix email notify"
-  python3 d_send_email_on_fix.py $1
+  python3 gps_tracker/d_send_email_on_fix.py $1
 
   ps -A | grep python3
   ```  
@@ -162,7 +162,7 @@ With the scripts you may do the following actions:
   ```
   chmod +x gps_bundle_services
   ```
-  Use the file like:
+  Use the script like:
   ```
   ./gps_bundle_services start|stop|restart
   ```
