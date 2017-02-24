@@ -141,10 +141,14 @@ With the scripts you may do the following actions:
   python3 d_gps_logger.py $1
   sleep 1
   echo "starting/stopping stream client lan"
-  python3 d_gps_stream_client.py 192.168.1.5 6000 $1
+  python3 d_gps_stream_client.py 192.168.1.5 2345 $1
   sleep 1
-  echo "starting/stopping stream client internet"
-  python3 d_gps_stream_client.py 1.2.3.4 2345 $1
+  python3 /home/pi/is_my_wan_ip.py 1.2.3.4
+  if [ $? = "0" ]; then
+     #this is not a U-turn!
+     echo "starting/stopping stream client internet"
+     python3 d_gps_stream_client.py 1.2.3.4 2345 $1
+  fi
   sleep 1
   echo "start/stop email on internet"
   python3 d_send_email_on_internet.py $1
@@ -154,7 +158,7 @@ With the scripts you may do the following actions:
 
   ps -A | grep python3
   ```  
-  Save the file and provide execution permissions:
+  Save the file and provide execution permissions for it:
   ```
   chmod +x gps_bundle_services
   ```
