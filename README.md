@@ -18,12 +18,12 @@ https://github.com/MartijnBraam/gpsd-py3
 In Raspbian/Debian In order to install all the above dependencies:
   
   ```
-  $ sudo apt-get update
-  $ sudo apt-get install gpsd python3 git
-  $ sudo pip3 install gpsd-py3
-  $ cd ~
-  $ git clone https://github.com/kostiskag/gps_tracker.git
-  $ cd gps_tracker
+  sudo apt-get update
+  sudo apt-get install gpsd python3 git
+  sudo pip3 install gpsd-py3
+  cd ~
+  git clone https://github.com/kostiskag/gps_tracker.git
+  cd gps_tracker
   ``` 
   
 ## Setting Up
@@ -48,7 +48,7 @@ http://stackoverflow.com/questions/10147455/how-to-send-an-email-with-gmail-as-p
 You should pass on your API key and your gmail credentials to configure.py
 
   ```
-  $ nano configure.py
+  nano configure.py
   ```
 
 ### Testing gmail
@@ -56,7 +56,7 @@ You should pass on your API key and your gmail credentials to configure.py
 You may send test your email setup with the following script:
 
   ```
-  $ python3 test_gmail.py
+  python3 test_gmail.py
   ```
   
 ## How to use
@@ -66,37 +66,37 @@ With the scripts you may do the following actions:
   
   ```
   #starts logging gps data
-  $ python3 gps_logger.py
+  python3 gps_logger.py
   
   #logs gps data as a daemon service and therefore is not afeced by shell hangups
-  $ python3 d_gps_logger.py start|stop|restart
+  python3 d_gps_logger.py start|stop|restart
   
   #generates a visual map from the logged data
-  $ python3 generate_gmap.py
+  python3 generate_gmap.py
   ```
   
 ### Streaming from the tracker (client) to a server and generate gmaps on the fly
 
   ```
   #starts a server, to be used from another host
-  $ python3 gps_stream_server.py [server's tcp port]
+  python3 gps_stream_server.py [server's tcp port]
   
   #starts a client from the gps tracker host
-  $ python3 gps_stream_client.py [server's ip address] [server's tcp port]
+  python3 gps_stream_client.py [server's ip address] [server's tcp port]
   
   #controlls a client from the gps tracker as a daemon
-  $ python3 gps_stream_client.py [server's ip address] [server's tcp port] start|stop|restart
+  python3 gps_stream_client.py [server's ip address] [server's tcp port] start|stop|restart
   ```
   
 ### Sending email notifications
 
   ```
   #starts a daemon service to send an email every time the device connects/reconnects to the Internet
-  $ python3 d_send_email_on_internet.py start|stop|restart
+  python3 d_send_email_on_internet.py start|stop|restart
   
   #starts a daemon service to send an email every time the tracker has a gps FIX and every 5min
   #the latest known location
-  $ python3 d_send_email_on_fix.py start|stop|restart
+  python3 d_send_email_on_fix.py start|stop|restart
   ```
   
 ### Internet/Network
@@ -104,15 +104,15 @@ With the scripts you may do the following actions:
   ```
   #returns to the shell 0 when there is no Internet and 1 when there is
   #access the return variable with the $? shell variable
-  $ python3 is_there_internet.py
+  python3 is_there_internet.py
   
   #waits while there is no Internet
-  $ python3 wait_for_internet.py
+  python3 wait_for_internet.py
   
   #checks wheter an expected public ip address is the hosts ip address 
   #returns to the shell 1 when you have guessed right and 0 when you have not.
   #this feature is mainly used to detect U-turns and do the appropriate actions.
-  $ python3 is_my_wan_ip.py [public ip address]
+  python3 is_my_wan_ip.py [public ip address]
   ```
   
 ### Daemon services
