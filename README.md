@@ -63,6 +63,7 @@ You may send test your email setup with the following script:
 With the scripts you may do the following actions:
 
 ### Logging and generating gmaps
+  
   ```
   #starts logging gps data
   $ python3 gps_logger.py
@@ -123,12 +124,27 @@ With the scripts you may do the following actions:
   Thanks to Sander Marechal for the daemon code found from:
   https://web.archive.org/web/20160305151936/http://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/
   
+### To create a script bundle in order to start|stop|restart all the daemon services together
+
+  ```
+  nano gps_bundle_services
+  ```  
+  Inside the file:
+  ```
+  ... lalala to do...
+  ```  
+  Save the file and provide execution permissions:
+  ```
+  chmod +x gps_bundle_services
+  ```
+  Use like:
+  ```
+  ./gps_bundle_services start|stop|restart
+  ```
+
 ## License
-
-My code is lisenced under Creative Commons Atribution 4.0 International:
-
+The source code written by me is licensed under Creative Commons Atribution 4.0 International:
 https://creativecommons.org/licenses/by/4.0/
 
 You may use the source code commercially.
-
 You should provide attribution for all the source code authors.
