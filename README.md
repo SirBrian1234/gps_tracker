@@ -8,7 +8,7 @@ This repository keeps standalone python scripts for various gps tracking and net
 - to send the proper email notifications for the above
 - to provide daemon services for the above
 
-The repository's source code is used for the " " project which may be viewed from my blog from here:
+The repository's source code is used for the gps_tracker project which may be viewed in detail from my blog from here:
 
 ## Installing
 
