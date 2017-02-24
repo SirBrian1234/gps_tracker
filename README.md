@@ -148,8 +148,8 @@ With the scripts you may do the following actions:
      #this is not a U-turn!
      echo "starting/stopping stream client internet"
      python3 d_gps_stream_client.py 1.2.3.4 2345 $1
+     sleep 1
   fi
-  sleep 1
   echo "start/stop email on internet"
   python3 d_send_email_on_internet.py $1
   sleep 1
