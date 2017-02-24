@@ -119,7 +119,8 @@ With the scripts you may do the following actions:
 
   ```
   #to make your own services
-  nano daemon-client.py
+  cp daemon-client.py new-service.py
+  nano new-service.py
   ```
   
   Thanks to Sander Marechal for the daemon code found from:
