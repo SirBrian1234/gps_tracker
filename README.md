@@ -162,6 +162,7 @@ With the scripts you may do the following actions:
   Save the file and provide execution permissions for it:
   ```
   chmod +x gps_bundle_services
+  sudo chmod +x gps_bundle_services
   ```
   Use the script like:
   ```
