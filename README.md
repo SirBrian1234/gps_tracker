@@ -143,7 +143,7 @@ echo "starting/stopping logger"
 python3 /home/pi/gps_tracker/d_gps_logger.py $1
 sleep 1
 echo "starting/stopping stream client lan"
-python3 /home/pi/gps_tracker/d_gps_stream_client.py 192.168.1.5 2345 $1
+python3 /home/pi/gps_tracker/d_gps_stream_client.py 192.168.1.2 2345 $1
 sleep 1
 python3 /home/pi/gps_tracker/is_my_wan_ip.py 1.2.3.4
 if [ $? = "0" ]; then
