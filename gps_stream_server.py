@@ -18,8 +18,10 @@ import json
 import sys
 import configure
   
-IP_ADDR = '192.168.1.2'
-TCP_PORT = 6000
+#leave the ip 0.0.0.0 in order to listen from all interfaces
+#select one specific IP in order to liste from a default interface  
+IP_ADDR = '0.0.0.0'
+TCP_PORT = 2345
 BUFFER_SIZE = 1024
 ACK = bytes("ack","utf-8")
 MAXIMUM_POINTS_PER_FILE = 10 

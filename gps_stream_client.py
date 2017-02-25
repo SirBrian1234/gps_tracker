@@ -18,7 +18,7 @@ import sys
 
 #you should change your ip address and tcp port to your server's address
 IP_ADDR = '192.168.1.2'
-TCP_PORT = 6000
+TCP_PORT = 2345
 BUFFER_SIZE = 20
 NO_FIX = bytes("NO-FIX","utf-8")
 out = NO_FIX
