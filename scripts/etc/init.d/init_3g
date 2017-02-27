@@ -1,0 +1,30 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          init_3g
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     4
+# Default-Stop:
+# Short-Description: Initialises 3g
+# Description:       This file initts 3g
+### END INIT INFO
+(
+sleep 30
+python3 /home/pi/gps_tracker/is_there_internet.py
+if [ $? = "1" ]; then
+   echo "Script drops for this one."
+   exit
+fi
+
+usb_modeswitch -c /etc/usb_modeswitch.conf
+
+while : ; do
+   echo "3g connect"
+   date
+   wvdial 3gconnect
+   echo "3g hangup"
+   date
+   sleep 10
+done
+) > /home/pi/3gout &

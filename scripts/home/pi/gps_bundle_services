@@ -1,0 +1,26 @@
+#!/bin/bash
+# comment the lines of the services you do not need to be started on the group
+# you may run this file as ./gps_bundle start|stop|restart
+# allways use absolute paths
+
+echo "starting/stopping logger"
+python3 /home/pi/gps_tracker/d_gps_logger.py $1
+sleep 1
+echo "starting/stopping stream client lan"
+python3 /home/pi/gps_tracker/d_gps_stream_client.py 192.168.1.2 2345 $1
+sleep 1
+python3 /home/pi/gps_tracker/is_my_wan_ip.py 1.2.3.4
+if [ $? = "0" ]; then
+   #this is not a U-turn!
+   echo "starting/stopping stream client internet"
+   python3 /home/pi/gps_tracker/d_gps_stream_client.py 1.2.3.4 2345 $1
+   sleep 1
+fi
+echo "start/stop email on internet"
+python3 /home/pi/gps_tracker/d_send_email_on_internet.py $1
+sleep 1
+echo "start/stop fix email notify"
+python3 /home/pi/gps_tracker/d_send_email_on_fix.py $1
+
+ps -A | grep python3
+
