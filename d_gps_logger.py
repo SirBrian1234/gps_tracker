@@ -60,11 +60,22 @@ class MyDaemon(Daemon):
         
                  str_point = json.dumps(point)
                  print("storing point to file:#"+str_point+"# str len:"+str(len(str_point)))
-                 f.write(str_point+',\n')
+
+                 try:
+                    f = open(filename, 'a')
+                 except:
+                    pass
+                 else:
+                    try:
+                       f.write(str_point+',\n')
+                    except:
+                       pass
+                    f.close()
                  
               else:
                  print("There is no GPS FIX yet. Packet mode 0.")
                  time.sleep(10)
+            
             except (NameError, KeyError): 
                print("There is no GPS FIX yet. Key or Name exception.")
                time.sleep(3) 
@@ -76,19 +87,13 @@ class MyDaemon(Daemon):
          
          except KeyboardInterrupt:
             print(" Received KeyboardInterrupt")
-            try:
-               print("Closing file.")
-               f.close()
-            except:
-               raise   
-            else:
-               print("File closed.")
-               break
+            break
          except:
-            print(sys.exc_info()[0])      
+            print(sys.exc_info()[0])
+            break      
 
 if __name__ == "__main__":
-        daemon = MyDaemon('/tmp/d-gps-logger.pid','/dev/null','/dev/null','/home/pi/stderr')
+        daemon = MyDaemon('/tmp/d-gps-logger.pid','/dev/null','/home/pi/stdout','/home/pi/stderr')
         if len(sys.argv) == 2:
                 if 'start' == sys.argv[1]:
                         daemon.start()
