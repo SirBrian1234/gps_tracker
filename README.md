@@ -172,6 +172,7 @@ If you decide to run it from the system's start in an init script run it like th
 ```
 sudo -u pi /home/pi/gps_bundle_services start
 ```
+On raspberry pi, rasapbian: If you decide to config 3g with wvdial and init scripts for 3g, gpsd and gps_bundle to be executed on the system's start, you may find those on the scripts directory.
 
 ## License
 The source code written by me is licensed under Creative Commons Atribution 4.0 International:
