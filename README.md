@@ -79,13 +79,13 @@ python3 generate_gmap.py
 
 ```
 #starts a server, to be used from another host
-python3 gps_stream_server.py [server's tcp port]
+python3 gps_stream_server.py
   
 #starts a client from the gps tracker host
-python3 gps_stream_client.py [server's ip address] [server's tcp port]
+python3 gps_stream_client.py
   
 #controlls a client from the gps tracker as a daemon
-python3 gps_stream_client.py [server's ip address] [server's tcp port] start|stop|restart
+python3 d_gps_stream_client.py [server's ip address] [server's tcp port] start|stop|restart
 ```
   
 ### Sending email notifications
