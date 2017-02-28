@@ -13,8 +13,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 import json
 import configure
 
-GPS_DATA_FILE = 'gps_route.log'
-GMAPS_FILE_TO_BE_GENERATED = 'generated_gmaps.html'
+GPS_DATA_FILE = '/home/pi/gps_route.log'
+GMAPS_FILE_TO_BE_GENERATED = '/home/pi/generated_gmaps.html'
 
 try:
    f = open(GPS_DATA_FILE,'r')
