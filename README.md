@@ -1,23 +1,21 @@
 # gps_tracker
-This repository keeps standalone python scripts for various gps tracking and networking tasks: 
+This repository is used for the gps_tracker project and keeps standalone Python scripts for various gps tracking and networking tasks: 
 
-- logging gps data and generate google maps in .html files
-- streaming gps data over LAN/Internet from a client with gps to a server
-- to check a device's Public (WAN) IP adress
-- to check wheter a host may be/not be connected to the Internet
-- to send the proper email notifications for the above
-- to provide daemon services for the above
+- Logging gps data and generate google maps in .html files
+- Streaming gps data over LAN/Internet from a client with gps to a server
+- To check a device's Public (WAN) IP adress
+- To check wheter a host may be/not be connected to the Internet
+- To send the proper email notifications for the above
+- To provide daemon services for the above
 
-The repository's source code is used for the gps_tracker project which may be viewed in detail from my blog:
+In order to learn more about the gps_tracker project, how it works and how to build and set up your own device, please visit the project's page from here:
 https://kostiskag.wordpress.com/2017/02/27/how-to-build-a-highly-resilient-raspberry-pi-gps-tracker-and-visualize-your-data-real-time-on-google-maps/
 
 ## Installing
-
-In order to be able to run them you should have a linux distribution with python3 and gpsd installed, most preferably, debian based. In addition you should have the gpsd-py3 package wich may be found here:
+In order to be able to run the scripts you should have a linux distribution with python3 and gpsd installed, most preferably, debian based. In addition you should have the gpsd-py3 package wich may be found here:
 https://github.com/MartijnBraam/gpsd-py3
 
-In Raspbian/Debian In order to install all the above dependencies:
-  
+In Raspbian/Debian In order to install all the above dependencies:  
 ```
 sudo apt-get update
 sudo apt-get install gpsd python3 python3-pip git
